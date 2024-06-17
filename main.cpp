@@ -11,22 +11,16 @@ int main() {
         std::cin >> number;
         if (number == -2) {
             std::cout << "Program completed" << std::endl;
-            break;
+            return 0;
         }
         if (number == -1 && vector.size() >= 5) {
             std::cout << "The fifth highest number - " << vector[4] << std::endl;
-            vector.clear();
-            continue;
-        }
-        if (vector.size() >= 5 && number > vector[4]) {
-            continue;
-        } else if (vector.size() >= 5 && number < vector[4]){
-            vector.insert(vector.begin() + 4, number);
+        } else if (vector.size() >= 5 && number < vector[4]) {
+            std::swap(vector[4], number);
             std::sort(vector.begin(), vector.end());
-        }else {
+        } else {
             vector.push_back(number);
             std::sort(vector.begin(), vector.end());
         }
     }
-    return 0;
 }
